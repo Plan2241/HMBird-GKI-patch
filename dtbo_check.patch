@@ -1,0 +1,17 @@
+--- property.c.orig	2025-05-04 19:33:04.672984467 +0800
++++ property.c	2025-05-04 19:38:04.100798386 +0800
+@@ -448,6 +448,14 @@
+ 	if (strnlen(prop->value, prop->length) >= prop->length)
+ 		return -EILSEQ;
+ 	*out_string = prop->value;
++	if (strcmp(propname, "type") == 0) {
++		if (np->parent &&
++			of_node_cmp(np->name. "version_type") == 0 &&
++			of_node_cmp(np->parent->name, "oplus,hmbird") == 0) {
++			*out_string = "HMBIRD_GKI";
++		}
++			
++	}
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(of_property_read_string);

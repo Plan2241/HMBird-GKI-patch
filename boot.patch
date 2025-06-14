@@ -1,0 +1,18 @@
+--- a/drivers/of/property.c
++++ b/drivers/of/property.c
+@@ -448,6 +448,15 @@
+ 	if (strnlen(prop->value, prop->length) >= prop->length)
+ 		return -EILSEQ;
+ 	*out_string = prop->value;
++	if (strcmp(propname, "type") == 0) {
++		if (np->parent && 
++		    of_node_cmp(np->name, "version_type") == 0 && 
++		    of_node_cmp(np->parent->name, "oplus,hmbird") == 0) 
++		{
++			*out_string = "HMBIRD_GKI";
++		}
++	}
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(of_property_read_string);
