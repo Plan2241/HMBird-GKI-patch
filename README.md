@@ -1,1 +1,1 @@
-# HMBird_GKI_patch
+# HMBird-GKI-patch
